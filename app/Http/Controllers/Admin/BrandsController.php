@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Brand;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 
-class BrandsController extends Controller
+class BrandsController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,7 @@ class BrandsController extends Controller
     public function index()
     {
         $brands = Brand::all();
-        return response()->json([
-            'results' => count($brands),
-            'data' => $brands,
-        ]);
+        return $this->showAll($brands);
     }
 
     /**
@@ -42,7 +39,7 @@ class BrandsController extends Controller
         $data['B_status'] = '0';
 
         $brand = Brand::create($data);
-        return response()->json(['results' => 1, 'data' => $brand]);
+        return $this->showOne($brand);
     }
 
     /**
@@ -54,10 +51,7 @@ class BrandsController extends Controller
     public function show($id)
     {
         $brand = Brand::findOrFail($id);
-        return response()->json([
-            'results' => 1,
-            'data' => $brand,
-        ]);
+        return $this->showOne($brand);
     }
 
     /**
@@ -94,16 +88,11 @@ class BrandsController extends Controller
         }
 
         if (!$brand->isDirty()) {
-            return response()->json([
-                'error' => 'You need to specify different value to update',
-            ]);
+            return $this->errorResponse('You need to specify different value to update', 422);
         }
 
         $brand->save();
-        return response()->json([
-            'results' => 1,
-            'data' => $brand,
-        ]);
+        return $this->showOne($brand);
     }
 
     /**
@@ -116,9 +105,6 @@ class BrandsController extends Controller
     {
         $brand = Brand::findOrFail($id);
         $brand->delete();
-        return response()->json([
-            'results' => 1,
-            'data' => $brand,
-        ]);
+        return $this->showOne($brand);
     }
 }
