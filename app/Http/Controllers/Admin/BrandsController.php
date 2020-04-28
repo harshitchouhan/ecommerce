@@ -30,12 +30,13 @@ class BrandsController extends ApiController
         $rules = [
             'B_title' => 'required',
             'B_detail' => 'required|max:1000',
+            'B_image' => 'image|mimes:jpg,png',
         ];
 
         $this->validate($request, $rules);
 
         $data = $request->all();
-        $data['B_image'] = 'user.jpg';
+        $data['B_image'] = $request->image->store('');
         $data['B_status'] = '0';
 
         $brand = Brand::create($data);
