@@ -19,5 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('brands', 'Admin\Brands\BrandsController');
-Route::resource('categories', 'Admin\CategoryController');
+Route::resource('categories', 'Admin\Categories\CategoryController');
 Route::resource('products', 'Admin\ProductsController');

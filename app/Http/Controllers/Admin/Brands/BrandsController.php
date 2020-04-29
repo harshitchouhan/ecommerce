@@ -57,13 +57,13 @@ class BrandsController extends ApiController
     public function update(BrandUpdateRequest $request, $id)
     {
         $brand = new Brand();
-        $updatedBrandValue = $brand->updateBrand(request(), $id);
+        $updatedBrand = $brand->updateBrand(request(), $id);
 
-        if($updatedBrandValue) {
-            return $this->showOne($updatedBrandValue);
-        } else {
+        if(!$updatedBrand) {
             return $this->errorResponse('You need to specify different value to update', 422);
         }
+
+        return $this->showOne($updatedBrand);
     }
 
     /**
