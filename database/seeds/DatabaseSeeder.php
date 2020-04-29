@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         // Brand::turncate();
         // Category::turncate();
 
-        $brandsQuantity = 30;
+        $brandsQuantity = 10;
         $CategoriesQuantity = 10;
         $ProductsQuantity = 10;
 

@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
 
 trait ApiResponser
@@ -12,7 +13,7 @@ trait ApiResponser
         return response()->json($data, $code);
     }
 
-    protected function errorResponse($message, $code)
+    public function errorResponse($message, $code)
     {
         return response()->json(['error' => $message, 'code' => $code], $code);
     }
@@ -26,4 +27,9 @@ trait ApiResponser
     {
         return $this->successResponse(['results' => 1, 'data' => $model], $code);
     }
+
+    // protected function showOne(JsonResponse $jsonResponse, $code = 422)
+    // {
+    //     return $this->successResponse(['results' => 1, 'data' => $jsonResponse], $code);
+    // }
 }

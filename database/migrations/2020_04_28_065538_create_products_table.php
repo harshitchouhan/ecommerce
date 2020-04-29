@@ -14,10 +14,10 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('p_code');
-            $table->integer('p_brandid');
-            $table->integer('p_categoryid');
+            $table->integer('p_brandid')->unsigned();;
+            $table->integer('p_categoryid')->unsigned();;
             $table->string('p_name');
             $table->string('p_description', 1000);
             $table->float('p_wholesaleprice');
@@ -35,6 +35,9 @@ class CreateProductsTable extends Migration
             $table->string('p_metadescription', 1000);
             $table->integer('p_relatedProducts');
             $table->timestamps();
+
+            $table->foreign('p_brandid')->references('id')->on('brands');
+            $table->foreign('p_categoryid')->references('id')->on('categories');
         });
     }
 
