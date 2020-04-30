@@ -26,7 +26,7 @@ class BrandStoreRequest extends FormRequest
         return [
             'B_title' => 'required|unique:brands,B_title',
             'B_detail' => 'required|max:1000',
-            'B_image' => 'image|mimes:jpg,png',
+            // 'B_image' => 'image|mimes:jpg,png',
         ];
     }
 }

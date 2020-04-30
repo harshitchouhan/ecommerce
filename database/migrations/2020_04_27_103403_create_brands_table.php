@@ -17,7 +17,7 @@ class CreateBrandsTable extends Migration
             $table->increments('id');
             $table->string('B_title');
             $table->string('B_detail', 1000);
-            $table->string('B_image');
+            $table->string('B_image')->nullable();
             $table->enum('B_status', ['1', '0']);
             $table->timestamps();
         });
