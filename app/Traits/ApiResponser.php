@@ -3,14 +3,17 @@
 namespace App\Traits;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
+use Spatie\Fractal\Facades\Fractal;
 
 trait ApiResponser
 {
     private function successResponse($data, $code)
     {
-        return response()->json($data, $code);
+        return response()->json([
+            'results' => $data['results'],
+            'data' => $data['data'],
+        ], $code);
     }
 
     public function errorResponse($message, $code)
@@ -20,16 +23,27 @@ trait ApiResponser
 
     protected function showAll(Collection $collection, $code = 200)
     {
-        return $this->successResponse(['results' => count($collection), 'data' => $collection], $code);
+        if ($collection->isEmpty()) {
+            return $this->successResponse($collection, $code);
+        }
+
+        $transformer = $collection->first()->transformer;
+        $collection = $this->transformData($collection, $transformer);
+        $collection['results'] = count($collection['data']);
+        return $this->successResponse($collection, $code);
     }
 
     protected function showOne(Model $model, $code = 200)
     {
-        return $this->successResponse(['results' => 1, 'data' => $model], $code);
+        $transformer = $model->transformer;
+        $model = $this->transformData($model, $transformer);
+        $model['results'] = 1;
+        return $this->successResponse($model, $code);
     }
 
-    // protected function showOne(JsonResponse $jsonResponse, $code = 422)
-    // {
-    //     return $this->successResponse(['results' => 1, 'data' => $jsonResponse], $code);
-    // }
+    protected function transformData($data, $transformer)
+    {
+        $transformation = Fractal($data, new $transformer);
+        return $transformation->toArray();
+    }
 }

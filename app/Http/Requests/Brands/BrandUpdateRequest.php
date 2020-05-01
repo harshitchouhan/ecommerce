@@ -24,7 +24,9 @@ class BrandUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'B_detail' => 'max:1000',
+            'Btitle' => 'unique:brands,Btitle',
+            'Bdetail' => 'max:1000',
+            'Bimage' => 'image|mimes:jpeg,png,jpg',
         ];
     }
 }

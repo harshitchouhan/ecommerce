@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\Admin\Brands;
 
 use App\Traits\ImageUpload;
+// use App\Transformers\BrandTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Brand extends Model
 {
+
+
     use ImageUpload;
-    protected $fillable = ['B_title', 'B_detail', 'B_image', 'B_status'];
+    protected $fillable = ['Btitle', 'Bdetail', 'Bimage', 'Bstatus'];
 
-
-    public function getImageAttribute()
-    {
-        return $this->B_image;
-    }
+    public $transformer = BrandTransformer::class;
 
     public function getAllBrands()
     {
@@ -33,11 +32,11 @@ class Brand extends Model
     {
         $data = $request->all();
 
-        if ($request->has('B_image')) {
+        if ($request->has('Bimage')) {
             // Get image file
-            $image = $request->file('B_image');
+            $image = $request->file('Bimage');
             // Make a image name based on brand name and current timestamp
-            $name = Str::slug($request->input('B_title')).'_'.time();
+            $name = Str::slug($request->input('Btitle')).'_'.time();
             // Define folder path
             $folder = '/uploads/images/brands/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
@@ -45,10 +44,10 @@ class Brand extends Model
             // Upload image
             $this->imageUpload($image, $folder, 'public', $name);
             // Set user profile image path in database to filePath
-            $data['B_image'] = $filePath;
+            $data['Bimage'] = 'http://ecommerce.test/app/public' . $filePath;
         }
 
-        $data['B_status'] = '0';
+        $data['Bstatus'] = '0';
 
         $brand = Brand::create($data);
         return $brand;
@@ -58,19 +57,19 @@ class Brand extends Model
     {
         $brand = $this->getBrand($id);
 
-        if ($request->has('B_title')) {
-            $brand->B_title = $request->B_title;
+        if ($request->has('Btitle')) {
+            $brand->Btitle = $request->Btitle;
         }
 
-        if ($request->has('B_detail')) {
-            $brand->B_detail = $request->B_detail;
+        if ($request->has('Bdetail')) {
+            $brand->Bdetail = $request->Bdetail;
         }
 
-        if ($request->has('B_image')) {
+        if ($request->has('Bimage')) {
             // Get image file
-            $image = $request->file('B_image');
+            $image = $request->file('Bimage');
             // Make a image name based on brand name and current timestamp
-            $name = Str::slug($request->input('B_title') ? $request->input('B_title') : $brand->B_title).'_'.time();
+            $name = Str::slug($request->input('Btitle') ? $request->input('Btitle') : $brand->Btitle).'_'.time();
             // Define folder path
             $folder = '/uploads/images/brands/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
@@ -78,11 +77,11 @@ class Brand extends Model
             // Upload image
             $this->imageUpload($image, $folder, 'public', $name);
             // Set user profile image path in database to filePath
-            $brand->B_image = $filePath;
+            $brand->Bimage = $filePath;
         }
 
-        if ($request->has('B_status')) {
-            $brand->B_status = $request->B_status;
+        if ($request->has('Bstatus')) {
+            $brand->Bstatus = $request->Bstatus;
         }
 
         if (!$brand->isDirty()) {
@@ -96,6 +95,7 @@ class Brand extends Model
     public function deleteBrand($id)
     {
         $brand = $this->getBrand($id);
+        $this->imageDelete($brand->Bimage);
         $brand->delete();
         return $brand;
     }

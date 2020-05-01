@@ -6,10 +6,16 @@ namespace App\Http\Controllers\Admin\Brands;
 use App\Http\Controllers\ApiController;
 use App\Http\Requests\Brands\BrandStoreRequest;
 use App\Http\Requests\Brands\BrandUpdateRequest;
+// use App\Transformers\BrandTransformer;
+use App\Http\Controllers\Admin\Brands\BrandTransformer;
 use Illuminate\Http\Request;
 
 class BrandsController extends ApiController
 {
+    public function __construct()
+    {
+        $this->middleware('transformInput:'. BrandTransformer::class)->only(['store', 'update']);
+    }
     /**
      * Display a listing of the resource.
      *

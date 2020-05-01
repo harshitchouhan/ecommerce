@@ -1,7 +1,7 @@
 <?php
 
-use App\Brand;
-use App\Category;
+use App\Http\Controllers\Admin\Brands\Brand;
+use App\Http\Controllers\Admin\Categories\Category;
 use App\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
