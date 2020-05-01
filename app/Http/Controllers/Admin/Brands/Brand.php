@@ -30,9 +30,9 @@ class Brand extends Model
     {
         $data = $request->all();
 
-        if ($request->has('Bimage')) {
+        if ($request->has('image')) {
             // Get image file
-            $image = $request->file('Bimage');
+            $image = $request->file('image');
             // Make a image name based on brand name and current timestamp
             $name = Str::slug($request->input('Btitle')) . '_' . time();
             // Define folder path

@@ -22,26 +22,27 @@ class TransformInput
             $transformedInput[$transformer::originalAttribute($input)] = $value;
         }
 
+        foreach ($request->files->all() as $input => $value) {
+            $transformedInput[$transformer::originalAttribute($input)] = $value;
+        }
+
+
+
         $request->replace($transformedInput);
-        // dd($request->replace($transformedInput));
+
         $response = $next($request);
 
         if (isset($response->exception) && $response->exception instanceof ValidationException) {
             $data = $response->getData();
             $transformedErrors = [];
-            // dd($data->error);
             foreach ($data->error as $field => $error) {
-                // dd($field);
                 $transformedField = $transformer::transformedAttribute($field);
-                // dd($transformer::transformedAttribute($field));
                 $transformedErrors[$transformedField] = str_replace(strtolower($field), $transformedField, $error);
-                // dd(strtolower($field));
             }
 
             $data->error = $transformedErrors;
             $response->setData($data);
         }
-
         return $response;
     }
 }

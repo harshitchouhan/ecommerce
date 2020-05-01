@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Admin\Categories;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+use App\Traits\ImageUpload;
+
 
 class Category extends Model
 {
+    use ImageUpload;
     protected $fillable = ['Cpid', 'Cname', 'Cdetail', 'Cimage', 'Cstatus', 'Cmetatitle', 'Cmetakeyword', 'Cmetadescription'];
 
     public $transformer = CategoryTransformer::class;
@@ -25,8 +29,22 @@ class Category extends Model
     public function storeCategory($request)
     {
         $data = $request->all();
+        if ($request->has('image')) {
+            // Get image file
+            $image = $request->file('image');
+            // Make a image name based on brand name and current timestamp
+            $name = Str::slug($request->input('Cname')) . '_' . time();
+            // Define folder path
+            $folder = '/uploads/images/categories/';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
+            // Upload image
+            $this->imageUpload($image, $folder, 'public', $name);
+            // Set user profile image path in database to filePath
+            $data['Cimage'] = 'http://ecommerce.test/app/public' . $filePath;
+        }
+
         $data['Cstatus'] = '0';
-        $data['Cimage'] = 'category.jpg';
 
         $category = Category::create($data);
         return $category;

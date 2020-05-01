@@ -27,7 +27,7 @@ class CategoriesStoreRequest extends FormRequest
             'Cpid' => 'required|min:1|integer',
             'Cname' => 'required|max:150',
             'Cdetail' => 'required|max:1000',
-            'Cimage' => 'image|mimes:jpg,png',
+            'Cimage' => 'image|mimes:png,jpg,jpeg|max:2048',
             'Cmetatitle' => 'required|max:500',
             'Cmetakeyword' => 'required|max:20',
             'Cmetadescription' => 'required|max:1000'
