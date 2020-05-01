@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = ['C_pid', 'C_name', 'C_detail', 'C_image', 'C_status', 'C_metatitle', 'C_metakeyword', 'C_metadescription'];
+    protected $fillable = ['Cpid', 'Cname', 'Cdetail', 'Cimage', 'Cstatus', 'Cmetatitle', 'Cmetakeyword', 'Cmetadescription'];
+
+    public $transformer = CategoryTransformer::class;
 
     public function getAllCategories()
     {
@@ -23,8 +25,8 @@ class Category extends Model
     public function storeCategory($request)
     {
         $data = $request->all();
-        $data['C_status'] = '0';
-        $data['C_image'] = 'category.jpg';
+        $data['Cstatus'] = '0';
+        $data['Cimage'] = 'category.jpg';
 
         $category = Category::create($data);
         return $category;
@@ -34,36 +36,36 @@ class Category extends Model
     {
         $category = $this->getCategory($id);
 
-        if ($request->has('C_pid')) {
-            $category->C_pid = $request->C_pid;
+        if ($request->has('Cpid')) {
+            $category->Cpid = $request->Cpid;
         }
 
-        if ($request->has('C_name')) {
-            $category->C_name = $request->C_name;
+        if ($request->has('Cname')) {
+            $category->Cname = $request->Cname;
         }
 
-        if ($request->has('C_detail')) {
-            $category->C_detail = $request->C_detail;
+        if ($request->has('Cdetail')) {
+            $category->Cdetail = $request->Cdetail;
         }
 
-        if ($request->has('C_image')) {
-            $category->C_image = $request->C_image;
+        if ($request->has('Cimage')) {
+            $category->Cimage = $request->Cimage;
         }
 
-        if ($request->has('C_status')) {
-            $category->C_status = $request->C_status;
+        if ($request->has('Cstatus')) {
+            $category->Cstatus = $request->Cstatus;
         }
 
-        if ($request->has('C_metatitle')) {
-            $category->C_metatitle = $request->C_metatitle;
+        if ($request->has('Cmetatitle')) {
+            $category->Cmetatitle = $request->Cmetatitle;
         }
 
-        if ($request->has('C_metakeyword')) {
-            $category->C_metakeyword = $request->C_metakeyword;
+        if ($request->has('Cmetakeyword')) {
+            $category->Cmetakeyword = $request->Cmetakeyword;
         }
 
-        if ($request->has('C_metadescription')) {
-            $category->C_metadescription = $request->C_metadescription;
+        if ($request->has('Cmetadescription')) {
+            $category->Cmetadescription = $request->Cmetadescription;
         }
 
         if (!$category->isDirty()) {

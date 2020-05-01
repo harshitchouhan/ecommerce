@@ -15,14 +15,14 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('C_pid');
-            $table->string('C_name');
-            $table->string('C_detail', 1000);
-            $table->string('C_image');
-            $table->enum('C_status', ['1', '0']);
-            $table->string('C_metatitle', 500);
-            $table->string('C_metakeyword', 500);
-            $table->string('C_metadescription', 1000);
+            $table->integer('Cpid');
+            $table->string('Cname');
+            $table->string('Cdetail', 1000);
+            $table->string('Cimage')->nullable();
+            $table->enum('Cstatus', ['1', '0']);
+            $table->string('Cmetatitle', 500);
+            $table->string('Cmetakeyword', 500);
+            $table->string('Cmetadescription', 1000);
             $table->timestamps();
         });
     }

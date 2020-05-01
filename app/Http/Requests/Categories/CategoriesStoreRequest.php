@@ -24,13 +24,13 @@ class CategoriesStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'C_pid' => 'required|min:1|integer',
-            'C_name' => 'required|max:150',
-            'C_detail' => 'required|max:1000',
-            'C_image' => 'image|mimes:jpg,png',
-            'C_metatitle' => 'required|max:500',
-            'C_metakeyword' => 'required|max:20',
-            'C_metadescription' => 'required|max:1000'
+            'Cpid' => 'required|min:1|integer',
+            'Cname' => 'required|max:150',
+            'Cdetail' => 'required|max:1000',
+            'Cimage' => 'image|mimes:jpg,png',
+            'Cmetatitle' => 'required|max:500',
+            'Cmetakeyword' => 'required|max:20',
+            'Cmetadescription' => 'required|max:1000'
         ];
     }
 }

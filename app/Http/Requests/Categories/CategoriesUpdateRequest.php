@@ -24,13 +24,13 @@ class CategoriesUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'C_pid' => 'min:1|integer',
-            'C_name' => 'max:150',
-            'C_detail' => 'max:1000',
-            'C_image' => 'image|mimes:jpg,png',
-            'C_metatitle' => 'max:500',
-            'C_metakeyword' => 'max:20',
-            'C_metadescription' => 'max:1000'
+            'Cpid' => 'min:1|integer',
+            'Cname' => 'max:150',
+            'Cdetail' => 'max:1000',
+            'Cimage' => 'image|mimes:jpg,png',
+            'Cmetatitle' => 'max:500',
+            'Cmetakeyword' => 'max:20',
+            'Cmetadescription' => 'max:1000'
         ];
     }
 }

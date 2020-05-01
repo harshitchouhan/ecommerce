@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Admin\Brands;
 
 use App\Traits\ImageUpload;
-// use App\Transformers\BrandTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Brand extends Model
 {
-
 
     use ImageUpload;
     protected $fillable = ['Btitle', 'Bdetail', 'Bimage', 'Bstatus'];
@@ -36,11 +34,11 @@ class Brand extends Model
             // Get image file
             $image = $request->file('Bimage');
             // Make a image name based on brand name and current timestamp
-            $name = Str::slug($request->input('Btitle')).'_'.time();
+            $name = Str::slug($request->input('Btitle')) . '_' . time();
             // Define folder path
             $folder = '/uploads/images/brands/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
-            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
             // Upload image
             $this->imageUpload($image, $folder, 'public', $name);
             // Set user profile image path in database to filePath
@@ -69,11 +67,11 @@ class Brand extends Model
             // Get image file
             $image = $request->file('Bimage');
             // Make a image name based on brand name and current timestamp
-            $name = Str::slug($request->input('Btitle') ? $request->input('Btitle') : $brand->Btitle).'_'.time();
+            $name = Str::slug($request->input('Btitle') ? $request->input('Btitle') : $brand->Btitle) . '_' . time();
             // Define folder path
             $folder = '/uploads/images/brands/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
-            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
             // Upload image
             $this->imageUpload($image, $folder, 'public', $name);
             // Set user profile image path in database to filePath
