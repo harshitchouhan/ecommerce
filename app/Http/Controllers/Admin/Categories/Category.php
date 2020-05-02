@@ -32,7 +32,6 @@ class Category extends Model
         $data = $request->all();
         if ($request->has('image')) {
             $filePath = $this->getImage($request, 'image', $request->Cname, 'categories');
-            $data['CFilePath'] = $filePath;
             $data['Cimage'] = 'http://ecommerce.test/app/public' . $filePath;
         }
 

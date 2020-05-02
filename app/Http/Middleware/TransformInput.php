@@ -17,7 +17,6 @@ class TransformInput
     public function handle($request, Closure $next, $transformer)
     {
         $transformedInput = [];
-        // dd($request->request->all());
         foreach ($request->request->all() as $input => $value) {
             $transformedInput[$transformer::originalAttribute($input)] = $value;
         }
@@ -34,8 +33,13 @@ class TransformInput
             $data = $response->getData();
             $transformedErrors = [];
             foreach ($data->error as $field => $error) {
+
                 $transformedField = $transformer::transformedAttribute($field);
-                $transformedErrors[$transformedField] = str_replace(strtolower($field), $transformedField, $error);
+                if (!$transformer == 'App\Http\Controllers\Admin\ProductAttribute\ProductAttributeTransformer') {
+                    $transformedErrors[$transformedField] = str_replace(strtolower($field), $transformedField, $error);
+                }
+
+                $transformedErrors[$transformedField] = str_replace(strtolower($field), $transformedField, str_replace('p a', 'pa', $error));
             }
 
             $data->error = $transformedErrors;
