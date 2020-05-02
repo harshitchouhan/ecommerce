@@ -23,6 +23,7 @@ trait ApiResponser
 
     protected function showAll(Collection $collection, $code = 200)
     {
+
         if ($collection->isEmpty()) {
             return $this->successResponse($collection, $code);
         }

@@ -64,8 +64,6 @@ class CategoryTransformer extends TransformerAbstract
             'updated_at' => 'updated_at',
         ];
 
-        // dd($attributes[$index]);
-
         return isset($attributes[$index]) ? $attributes[$index] : null;
     }
 }

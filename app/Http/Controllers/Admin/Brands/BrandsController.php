@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin\Brands;
 
 
 use App\Http\Controllers\ApiController;
-use App\Http\Requests\Brands\BrandStoreRequest;
-use App\Http\Requests\Brands\BrandUpdateRequest;
 // use App\Transformers\BrandTransformer;
 use App\Http\Controllers\Admin\Brands\BrandTransformer;
+use App\Http\Controllers\Admin\Brands\Requests\BrandStoreRequest;
+use App\Http\Controllers\Admin\Brands\Requests\BrandUpdateRequest;
 use Illuminate\Http\Request;
 
 class BrandsController extends ApiController

@@ -15,29 +15,27 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('p_code');
-            $table->integer('p_brandid')->unsigned();;
-            $table->integer('p_categoryid')->unsigned();;
-            $table->string('p_name');
-            $table->string('p_description', 1000);
-            $table->float('p_wholesaleprice');
-            $table->float('p_retailprice');
-            $table->float('p_saleprice');
-            $table->enum('p_status', ['1', '0']);
-            $table->string('p_image1');
-            $table->string('p_image2');
-            $table->string('p_image3');
-            $table->string('p_image4');
-            $table->string('p_image5');
-            $table->string('p_video');
-            $table->string('p_metatitle', 500);
-            $table->string('p_metakeyword', 500);
-            $table->string('p_metadescription', 1000);
-            $table->integer('p_relatedProducts');
+            $table->integer('Pcode');
+            $table->integer('Pbrandid')->unsigned();;
+            $table->integer('Pcategoryid')->unsigned();;
+            $table->string('Pname');
+            $table->string('Pdescription', 1000);
+            $table->integer('PsellerId');
+            $table->float('Pwholesaleprice');
+            $table->float('Pretailprice');
+            $table->float('Psaleprice');
+            $table->enum('Pstatus', ['1', '0']);
+            $table->string('Pimage1');
+            $table->string('Pimage2');
+            $table->string('Pimage3');
+            $table->string('Pimage4');
+            $table->string('Pimage5');
+            $table->string('Pvideo');
+            $table->string('Pmetatitle', 500);
+            $table->string('Pmetakeyword', 500);
+            $table->string('Pmetadescription', 1000);
+            $table->integer('PrelatedProducts');
             $table->timestamps();
-
-            $table->foreign('p_brandid')->references('id')->on('brands');
-            $table->foreign('p_categoryid')->references('id')->on('categories');
         });
     }
 

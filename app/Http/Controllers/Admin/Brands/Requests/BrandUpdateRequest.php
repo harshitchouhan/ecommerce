@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Brands;
+namespace App\Http\Controllers\Admin\Brands\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BrandStoreRequest extends FormRequest
+class BrandUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class BrandStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'Btitle' => 'required|unique:brands,Btitle',
-            'Bdetail' => 'required|max:1000',
-            'Bimage' => 'image|mimes:png,jpg',
+            'Btitle' => 'unique:brands,Btitle',
+            'Bdetail' => 'max:1000',
+            'Bimage' => 'image|mimes:png,jpg|max:2048',
         ];
     }
 }

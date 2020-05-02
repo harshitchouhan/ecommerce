@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Categories;
 
+use App\Http\Controllers\Admin\Products\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use App\Traits\ImageUpload;
@@ -30,17 +31,8 @@ class Category extends Model
     {
         $data = $request->all();
         if ($request->has('image')) {
-            // Get image file
-            $image = $request->file('image');
-            // Make a image name based on brand name and current timestamp
-            $name = Str::slug($request->input('Cname')) . '_' . time();
-            // Define folder path
-            $folder = '/uploads/images/categories/';
-            // Make a file path where image will be stored [ folder path + file name + file extension]
-            $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
-            // Upload image
-            $this->imageUpload($image, $folder, 'public', $name);
-            // Set user profile image path in database to filePath
+            $filePath = $this->getImage($request, 'image', $request->Cname, 'categories');
+            $data['CFilePath'] = $filePath;
             $data['Cimage'] = 'http://ecommerce.test/app/public' . $filePath;
         }
 
@@ -67,7 +59,8 @@ class Category extends Model
         }
 
         if ($request->has('Cimage')) {
-            $category->Cimage = $request->Cimage;
+            $filePath = $this->getImage($request, 'image', $category->Cname, 'categories');
+            $category->Cimage = 'http://ecommerce.test/app/public' . $filePath;
         }
 
         if ($request->has('Cstatus')) {
@@ -97,6 +90,7 @@ class Category extends Model
     public function deleteCategory($id)
     {
         $category = $this->getCategory($id);
+        $this->imageDelete(str_replace('http://ecommerce.test/app/public', '', $category->Cimage));
         $category->delete();
         return $category;
     }

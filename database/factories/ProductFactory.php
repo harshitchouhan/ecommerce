@@ -2,29 +2,30 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Product;
+use App\Http\Controllers\Admin\Products\Product;
 use Faker\Generator as Faker;
 
 $factory->define(Product::class, function (Faker $faker) {
     return [
-        'p_code' => $faker->randomDigit,
-        'p_brandid' => $faker->numberBetween($min = 1, $max = 10),
-        'p_categoryid' => $faker->numberBetween($min = 1, $max = 10),
-        'p_name' => $faker->unique()->word,
-        'p_description' => $faker->paragraph,
-        'p_wholesaleprice' => $faker->numberBetween($min = 100, $max = 50000),
-        'p_retailprice' => $faker->numberBetween($min = 100, $max = 50000),
-        'p_saleprice' => $faker->numberBetween($min = 100, $max = 50000),
-        'p_status' => $faker->randomElement(['1','0']),
-        'p_image1' => $faker->randomElement(['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg']),
-        'p_image2' => $faker->randomElement(['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg']),
-        'p_image3' => $faker->randomElement(['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg']),
-        'p_image4' => $faker->randomElement(['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg']),
-        'p_image5' => $faker->randomElement(['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg']),
-        'p_video' => $faker->randomElement(['video-1.mp4', 'video-2.mp4']),
-        'p_metatitle' => $faker->paragraph,
-        'p_metakeyword' => $faker->word,
-        'p_metadescription' => $faker->paragraph,
-        'p_relatedProducts' => $faker->randomDigit,
+        'Pcode' => $faker->randomDigit,
+        'Pbrandid' => $faker->numberBetween($min = 1, $max = 10),
+        'Pcategoryid' => $faker->numberBetween($min = 1, $max = 10),
+        'Pname' => $faker->unique()->word,
+        'Pdescription' => $faker->paragraph,
+        'PsellerId' => $faker->randomDigit,
+        'Pwholesaleprice' => $faker->numberBetween($min = 100, $max = 50000),
+        'Pretailprice' => $faker->numberBetween($min = 100, $max = 50000),
+        'Psaleprice' => $faker->numberBetween($min = 100, $max = 50000),
+        'Pstatus' => $faker->randomElement(['1','0']),
+        'Pimage1' => $faker->randomElement(['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg']),
+        'Pimage2' => $faker->randomElement(['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg']),
+        'Pimage3' => $faker->randomElement(['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg']),
+        'Pimage4' => $faker->randomElement(['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg']),
+        'Pimage5' => $faker->randomElement(['img-1.jpg', 'img-2.jpg', 'img-3.jpg', 'img-4.jpg', 'img-5.jpg']),
+        'Pvideo' => $faker->randomElement(['video-1.mp4', 'video-2.mp4']),
+        'Pmetatitle' => $faker->paragraph,
+        'Pmetakeyword' => $faker->word,
+        'Pmetadescription' => $faker->paragraph,
+        'PrelatedProducts' => $faker->randomDigit,
     ];
 });

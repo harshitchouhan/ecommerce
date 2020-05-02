@@ -17,7 +17,7 @@ class TransformInput
     public function handle($request, Closure $next, $transformer)
     {
         $transformedInput = [];
-
+        // dd($request->request->all());
         foreach ($request->request->all() as $input => $value) {
             $transformedInput[$transformer::originalAttribute($input)] = $value;
         }
@@ -25,8 +25,6 @@ class TransformInput
         foreach ($request->files->all() as $input => $value) {
             $transformedInput[$transformer::originalAttribute($input)] = $value;
         }
-
-
 
         $request->replace($transformedInput);
 

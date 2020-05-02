@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Brands;
 
+use App\Http\Controllers\Admin\Products\Product;
 use App\Traits\ImageUpload;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -93,7 +94,7 @@ class Brand extends Model
     public function deleteBrand($id)
     {
         $brand = $this->getBrand($id);
-        $this->imageDelete($brand->Bimage);
+        $this->imageDelete(str_replace('http://ecommerce.test/app/public', '', $brand->Bimage));
         $brand->delete();
         return $brand;
     }

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\Brands\Brand;
 use App\Http\Controllers\Admin\Categories\Category;
-use App\Product;
+use App\Http\Controllers\Admin\Products\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,10 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
-        // Brand::turncate();
-        // Category::turncate();
-
         $brandsQuantity = 10;
         $CategoriesQuantity = 10;
         $ProductsQuantity = 10;

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin\Categories;
 
 use App\Http\Controllers\ApiController;
-use App\Http\Requests\Categories\CategoriesStoreRequest;
-use App\Http\Requests\Categories\CategoriesUpdateRequest;
+use App\Http\Controllers\Admin\Categories\Requests\CategoriesStoreRequest;
+use App\Http\Controllers\Admin\Categories\Requests\CategoriesUpdateRequest;
 use App\Http\Controllers\Admin\Categories\CategoryTransformer;
 use Illuminate\Http\Request;
 
