@@ -52,10 +52,6 @@ class Customer extends Model
             $customer->cemail = $request->cemail;
         }
 
-        if ($request->has('cemail')) {
-            $customer->cemail = $request->cemail;
-        }
-
         if ($request->has('image')) {
             $filePath = $this->getImage($request, 'image', $request->cname, 'customers');
             $data['cimage'] = 'http://ecommerce.test/app/public' . $filePath;
