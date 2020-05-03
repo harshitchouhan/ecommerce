@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Brands\Brand;
 use App\Http\Controllers\Admin\Categories\Category;
+use App\Http\Controllers\Admin\Customers\Customer;
 use App\Http\Controllers\Admin\ProductAttribute\ProductAttribute;
 use App\Http\Controllers\Admin\ProductAttributeRelations\ProductAttributeRelation;
 use App\Http\Controllers\Admin\Products\Product;
@@ -22,11 +23,13 @@ class DatabaseSeeder extends Seeder
         $ProductsQuantity = 10;
         $ProductAttributeQuantity = 10;
         $ProductAttributeRelationQuantity = 10;
+        $CustomerQuantity = 10;
 
-        factory(Brand::class, $brandsQuantity)->create();
-        factory(Category::class, $CategoriesQuantity)->create();
-        factory(Product::class, $ProductsQuantity)->create();
-        factory(ProductAttribute::class, $ProductAttributeQuantity)->create();
-        factory(ProductAttributeRelation::class, $ProductAttributeRelationQuantity)->create();
+        // factory(Brand::class, $brandsQuantity)->create();
+        // factory(Category::class, $CategoriesQuantity)->create();
+        // factory(Product::class, $ProductsQuantity)->create();
+        // factory(ProductAttribute::class, $ProductAttributeQuantity)->create();
+        // factory(ProductAttributeRelation::class, $ProductAttributeRelationQuantity)->create();
+        factory(Customer::class, $CustomerQuantity)->create();
     }
 }
