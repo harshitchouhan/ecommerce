@@ -20,8 +20,8 @@ class CreateSellersTable extends Migration
             $table->string('simage')->nullable();
             $table->text('saddressline1');
             $table->text('saddressline2')->nullable();
-            $table->string('scity');
-            $table->string('sstate');
+            $table->integer('scity');
+            $table->integer('sstate');
             $table->string('szipcode');
             $table->text('sgoogleid')->nullable();
             $table->text('sfaceboookid')->nullable();

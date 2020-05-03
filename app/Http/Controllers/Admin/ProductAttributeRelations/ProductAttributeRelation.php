@@ -19,8 +19,8 @@ class ProductAttributeRelation extends Model
 
     public function getProductAttributeRelation($id)
     {
-        $productAttributeRelations = ProductAttributeRelation::findOrFail($id);
-        return $productAttributeRelations;
+        $productAttributeRelation = ProductAttributeRelation::findOrFail($id);
+        return $productAttributeRelation;
     }
 
     public function storeProductAttributeRelation($request)
@@ -50,7 +50,7 @@ class ProductAttributeRelation extends Model
         return $productAttributeRelation;
     }
 
-    public function deleteProductAttribute($id)
+    public function deleteProductAttributeRelation($id)
     {
         $productAttributeRelation = $this->getProductAttributeRelation($id);
         $productAttributeRelation->delete();

@@ -79,7 +79,7 @@ class ProductAttributeRelationController extends ApiController
     public function destroy($id)
     {
         $productAttributeRelation = new ProductAttributeRelation();
-        $deletedProductAttributeRelation = $productAttributeRelation->deleteProductAttribute($id);
+        $deletedProductAttributeRelation = $productAttributeRelation->deleteProductAttributeRelation($id);
         return $this->showOne($deletedProductAttributeRelation);
     }
 }

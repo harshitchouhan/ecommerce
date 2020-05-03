@@ -20,8 +20,8 @@ class CreateCustomersTable extends Migration
             $table->string('cimage')->nullable();
             $table->text('caddressline1');
             $table->text('caddressline2')->nullable();
-            $table->string('ccity');
-            $table->string('cstate');
+            $table->integer('ccity');
+            $table->integer('cstate');
             $table->string('czipcode');
             $table->text('cgoogleid')->nullable();
             $table->text('cfaceboookid')->nullable();

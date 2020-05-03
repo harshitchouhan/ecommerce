@@ -23,5 +23,7 @@ Route::resource('categories', 'Admin\Categories\CategoryController');
 Route::resource('products', 'Admin\Products\ProductsController');
 Route::resource('productAttributes', 'Admin\ProductAttribute\ProductAttributeController');
 Route::resource('productAttributeRelations', 'Admin\ProductAttributeRelations\ProductAttributeRelationController');
+Route::resource('productAttributeValues', 'Admin\ProductAttributeValues\ProductAttributeValueController');
 Route::resource('customers', 'Admin\Customers\CustomerController');
 Route::resource('sellers', 'Admin\Sellers\SellerController');
+Route::resource('city', 'Admin\Cities\CityController');
