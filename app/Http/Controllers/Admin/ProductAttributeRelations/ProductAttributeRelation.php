@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductAttributeRelation extends Model
 {
-    protected $fillable = ['parpid', 'paraid'];
+    protected $fillable = ['parpid', 'paraid', 'parvid'];
 
     public $transformer = ProductAttributeRelationTransformer::class;
 
@@ -39,6 +39,10 @@ class ProductAttributeRelation extends Model
         }
 
         if ($request->has('paraid')) {
+            $productAttributeRelation->paraid = $request->paraid;
+        }
+
+        if ($request->has('parvid')) {
             $productAttributeRelation->paraid = $request->paraid;
         }
 

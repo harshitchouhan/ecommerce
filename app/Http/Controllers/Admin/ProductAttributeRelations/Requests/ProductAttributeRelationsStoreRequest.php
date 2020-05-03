@@ -26,6 +26,7 @@ class ProductAttributeRelationsStoreRequest extends FormRequest
         return [
             'parpid' => 'required|integer',
             'paraid' => 'required|integer',
+            'parvid' => 'required|integer',
         ];
     }
 }

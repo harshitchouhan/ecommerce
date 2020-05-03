@@ -18,6 +18,7 @@ class ProductAttributeRelationTransformer extends TransformerAbstract
             'id' => $productAttributeRelation->id,
             'pid' => $productAttributeRelation->parpid,
             'aid' => $productAttributeRelation->paraid,
+            'vid' => $productAttributeRelation->parvid,
             'created_at' => $productAttributeRelation->created_at,
             'updated_at' => $productAttributeRelation->updated_at,
         ];
@@ -29,6 +30,7 @@ class ProductAttributeRelationTransformer extends TransformerAbstract
             'id' => 'id',
             'pid' => 'parpid',
             'aid' => 'paraid',
+            'vid' => 'parvid',
             'created_at' => 'created_at',
             'updated_at' => 'updated_at',
         ];
@@ -43,6 +45,7 @@ class ProductAttributeRelationTransformer extends TransformerAbstract
             'id' => 'id',
             'parpid' => 'pid',
             'paraid' => 'aid',
+            'parvid' => 'vid',
             'created_at' => 'created_at',
             'updated_at' => 'updated_at',
         ];

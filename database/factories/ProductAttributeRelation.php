@@ -8,7 +8,8 @@ use Faker\Generator as Faker;
 
 $factory->define(ProductAttributeRelation::class, function (Faker $faker) {
     return [
-        'parpId' => $faker->randomDigit,
-        'paraId' => $faker->randomDigit,
+        'parpid' => $faker->randomDigit,
+        'paraid' => $faker->randomDigit,
+        'parvid' => $faker->randomDigit,
     ];
 });

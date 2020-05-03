@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\Categories\Category;
 use App\Http\Controllers\Admin\Customers\Customer;
 use App\Http\Controllers\Admin\ProductAttribute\ProductAttribute;
 use App\Http\Controllers\Admin\ProductAttributeRelations\ProductAttributeRelation;
-use App\Http\Controllers\Admin\ProductAttributeValue\ProductAttributeValue;
+use App\Http\Controllers\Admin\ProductAttributeValues\ProductAttributeValue;
 use App\Http\Controllers\Admin\Products\Product;
 use App\Http\Controllers\Admin\Sellers\Seller;
 use Illuminate\Database\Seeder;
@@ -29,13 +29,13 @@ class DatabaseSeeder extends Seeder
         $SellersQuantity = 10;
         $ProductAttributeValueQuantity = 10;
 
-        // factory(Brand::class, $brandsQuantity)->create();
-        // factory(Category::class, $CategoriesQuantity)->create();
-        // factory(Product::class, $ProductsQuantity)->create();
-        // factory(ProductAttribute::class, $ProductAttributeQuantity)->create();
-        // factory(ProductAttributeRelation::class, $ProductAttributeRelationQuantity)->create();
-        // factory(Customer::class, $CustomerQuantity)->create();
-        // factory(Seller::class, $SellersQuantity)->create();
+        factory(Brand::class, $brandsQuantity)->create();
+        factory(Category::class, $CategoriesQuantity)->create();
+        factory(Product::class, $ProductsQuantity)->create();
+        factory(ProductAttribute::class, $ProductAttributeQuantity)->create();
+        factory(ProductAttributeRelation::class, $ProductAttributeRelationQuantity)->create();
+        factory(Customer::class, $CustomerQuantity)->create();
+        factory(Seller::class, $SellersQuantity)->create();
         factory(ProductAttributeValue::class, $ProductAttributeValueQuantity)->create();
     }
 }
