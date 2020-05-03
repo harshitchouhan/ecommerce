@@ -22,3 +22,4 @@ Route::resource('brands', 'Admin\Brands\BrandsController');
 Route::resource('categories', 'Admin\Categories\CategoryController');
 Route::resource('products', 'Admin\Products\ProductsController');
 Route::resource('productAttributes', 'Admin\ProductAttribute\ProductAttributeController');
+Route::resource('productAttributeRelations', 'Admin\ProductAttributeRelations\ProductAttributeRelationController');

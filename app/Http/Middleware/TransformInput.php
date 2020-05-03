@@ -32,6 +32,7 @@ class TransformInput
         if (isset($response->exception) && $response->exception instanceof ValidationException) {
             $data = $response->getData();
             $transformedErrors = [];
+            // dd($transformer);
             foreach ($data->error as $field => $error) {
 
                 $transformedField = $transformer::transformedAttribute($field);
