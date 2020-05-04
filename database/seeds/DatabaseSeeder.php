@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Brands\Brand;
 use App\Http\Controllers\Admin\Categories\Category;
+use App\Http\Controllers\Admin\City\City;
 use App\Http\Controllers\Admin\CustomerAddress\CustomerAddress;
 use App\Http\Controllers\Admin\Customers\Customer;
 use App\Http\Controllers\Admin\ProductAttribute\ProductAttribute;
@@ -30,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $SellersQuantity = 10;
         $ProductAttributeValueQuantity = 10;
         $CustomerAddressQuantity = 10;
+        $CitiesQuantity = 10;
 
         factory(Brand::class, $brandsQuantity)->create();
         factory(Category::class, $CategoriesQuantity)->create();
@@ -40,5 +42,6 @@ class DatabaseSeeder extends Seeder
         factory(Seller::class, $SellersQuantity)->create();
         factory(ProductAttributeValue::class, $ProductAttributeValueQuantity)->create();
         factory(CustomerAddress::class, $CustomerAddressQuantity)->create();
+        factory(City::class, $CitiesQuantity)->create();
     }
 }

@@ -27,3 +27,4 @@ Route::resource('productAttributeValues', 'Admin\ProductAttributeValues\ProductA
 Route::resource('customers', 'Admin\Customers\CustomerController');
 Route::resource('customerAddress', 'Admin\CustomerAddress\CustomerAddressController');
 Route::resource('sellers', 'Admin\Sellers\SellerController');
+Route::resource('city', 'Admin\City\CityController');
