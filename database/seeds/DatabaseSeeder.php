@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ProductAttributeRelations\ProductAttributeRelatio
 use App\Http\Controllers\Admin\ProductAttributeValues\ProductAttributeValue;
 use App\Http\Controllers\Admin\Products\Product;
 use App\Http\Controllers\Admin\Sellers\Seller;
+use App\Http\Controllers\Admin\Shipping\Shipping;
 use App\Http\Controllers\Admin\States\State;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
         $CitiesQuantity = 10;
         $StatesQuantity = 10;
         $DiscountsQuantity = 10;
+        $ShippingQuantity = 10;
 
         // factory(Brand::class, $brandsQuantity)->create();
         // factory(Category::class, $CategoriesQuantity)->create();
@@ -48,6 +50,7 @@ class DatabaseSeeder extends Seeder
         // factory(CustomerAddress::class, $CustomerAddressQuantity)->create();
         // factory(City::class, $CitiesQuantity)->create();
         // factory(State::class, $StatesQuantity)->create();
-        factory(Discount::class, $DiscountsQuantity)->create();
+        // factory(Discount::class, $DiscountsQuantity)->create();
+        factory(Shipping::class, $ShippingQuantity)->create();
     }
 }

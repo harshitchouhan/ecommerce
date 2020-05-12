@@ -30,3 +30,4 @@ Route::resource('sellers', 'Admin\Sellers\SellerController');
 Route::resource('city', 'Admin\City\CityController');
 Route::resource('state', 'Admin\States\StateController');
 Route::resource('discount', 'Admin\Discounts\DiscountController');
+Route::resource('shipping', 'Admin\Shipping\ShippingController');
