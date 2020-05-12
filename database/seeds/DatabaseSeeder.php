@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\Products\Product;
 use App\Http\Controllers\Admin\Sellers\Seller;
 use App\Http\Controllers\Admin\Shipping\Shipping;
 use App\Http\Controllers\Admin\States\State;
+use App\Http\Controllers\Admin\Wishlist\Wishlist;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
         $StatesQuantity = 10;
         $DiscountsQuantity = 10;
         $ShippingQuantity = 10;
+        $WishlistQuantity = 10;
 
         // factory(Brand::class, $brandsQuantity)->create();
         // factory(Category::class, $CategoriesQuantity)->create();
@@ -51,6 +53,7 @@ class DatabaseSeeder extends Seeder
         // factory(City::class, $CitiesQuantity)->create();
         // factory(State::class, $StatesQuantity)->create();
         // factory(Discount::class, $DiscountsQuantity)->create();
-        factory(Shipping::class, $ShippingQuantity)->create();
+        // factory(Shipping::class, $ShippingQuantity)->create();
+        factory(Wishlist::class, $WishlistQuantity)->create();
     }
 }
